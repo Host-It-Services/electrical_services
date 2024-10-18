@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import topImage from "../assets/header.jpg";
-import whyus from "../assets/team.jpg";
-import contactUs from "../assets/car.jpg";
-import logo from "../assets/logo.png";
-import {services} from "../data/service_data";
-import {Clock,ThumbsUp,PhoneCall } from 'lucide-react'
+import whyus from "../assets/team.webp";
+import contactUs from "../assets/call.webp";
+import logo from "../assets/logo.webp";
+import header_image from "../assets/header.webp"
+import { services } from "../data/service_data";
+import { Clock, ThumbsUp, PhoneCall } from 'lucide-react'
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 
 
 
@@ -26,12 +29,22 @@ export default function App() {
         <div className="app">
             {/* Hero Section with Overlay Header */}
             <section className="hero">
-                <img src={topImage} loading="lazy" className="hero-image" alt="Hero" />
+                <LazyLoadImage
+                     src={header_image}
+                     loading="lazy"
+
+                     className="hero-image"
+                     srcSet="/src/assets/header-small.webp 768w, /src/assets/header.webp 1200w"
+                     sizes="(max-width: 768px) 768px, 100vw"
+                     alt="Hero Background"
+                    
+
+                />
                 <header className="header">
                     <div className="container">
                         {/* Logo */}
                         <div className="logo">
-                            <img src={logo} loading="lazy" alt="" />
+                            <LazyLoadImage src={logo} loading="lazy" alt="" width="150" height="50" />
                         </div>
 
                         {/* Hamburger Icon (Only Visible on Mobile) */}
@@ -67,7 +80,15 @@ export default function App() {
                     <div className="service-grid">
                         {services.map((service, index) => (
                             <div key={index} className="service-card">
-                                <img src={service.image} loading="lazy" alt={service.title} />
+                                <LazyLoadImage
+                                    src={service.image}
+                                    loading="lazy"
+                                    alt={service.title}
+                                    effect="blur"
+                                    style={{ width: '100%', height: 'auto' }} // Makes the image responsive
+                                    sizes="(max-width: 600px) 50vw, 220px"
+                                />
+
                                 <div className="service-content">
                                     <div className="service-icon">{service.icon}</div>
                                     <h3>{service.title}</h3>
@@ -101,7 +122,14 @@ export default function App() {
                             ))}
                         </div>
                         <div className="team-image">
-                            <img src={whyus} loading="lazy" alt="Our team of electricians" />
+                            <LazyLoadImage
+                                src={whyus}
+                                alt="Our team of electricians"
+                                effect="blur"
+                                loading="lazy"
+                                srcSet="/assets/team-small.webp 480w, /assets/team.webp 800w"
+                                sizes="(max-width: 600px) 480px, 800px"
+                            />
                         </div>
                     </div>
                 </div>
@@ -113,7 +141,13 @@ export default function App() {
                     <h2>Contact Us</h2>
                     <div className="contact-content">
                         <div className="contact-image">
-                            <img src={contactUs} loading="lazy" alt="Electrician van" />
+                            <LazyLoadImage
+                                src={contactUs}
+                                alt="Electrician van"
+                                effect="blur"
+                                loading="lazy"
+                                sizes="(max-width: 600px) 480px, 800px"
+                            />
                         </div>
                         <form onSubmit={handleSubmit} className="contact-form">
                             <input

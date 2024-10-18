@@ -119,6 +119,10 @@ body {
   justify-content: center;
   color: white;
   text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
   /* Media Query for Mobile View */
 }
 .hero .hero-image {
@@ -131,6 +135,8 @@ body {
   object-position: center;
   z-index: -1;
   background-repeat: no-repeat;
+  background-position: 0em;
+  background-size: cover;
   filter: brightness(0.7);
 }
 .hero .hero-content {
@@ -218,6 +224,7 @@ body {
   max-width: 400px;
   background-color: white;
   border-radius: 8px;
+  height: 33em;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -231,13 +238,13 @@ body {
   object-fit: cover;
 }
 .services .service-card .service-content {
-  padding: 1.5rem;
+  padding: 1.2rem;
   text-align: center;
 }
 .services .service-card .service-content .service-icon {
   color: #2563eb;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: -1rem;
 }
 .services .service-card .service-content h3 {
   font-size: 1.6rem;

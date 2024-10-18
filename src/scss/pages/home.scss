@@ -154,6 +154,10 @@ body {
     justify-content: center;
     color: white;
     text-align: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
 
     .hero-image {
         position: absolute;
@@ -165,6 +169,8 @@ body {
         object-position: center; // Center the image for better alignment
         z-index: -1;
         background-repeat: no-repeat;
+        background-position: 00em;
+        background-size: cover;
         filter: brightness(0.7);
     }
 
@@ -274,6 +280,7 @@ body {
         max-width: 400px; // Set a maximum width for consistency
         background-color: white;
         border-radius: 8px;
+        height: 33em;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s, box-shadow 0.3s;
 
@@ -289,13 +296,13 @@ body {
         }
 
         .service-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
             text-align: center;
 
             .service-icon {
                 color: $primary-color;
                 font-size: 2rem;
-                margin-bottom: 1rem;
+                margin-bottom: -1rem;
             }
 
             h3 {
@@ -306,6 +313,7 @@ body {
             p {
                 font-size: 1rem;
                 color: #555;
+
             }
         }
     }
