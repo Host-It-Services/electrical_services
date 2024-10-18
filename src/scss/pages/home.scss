@@ -155,30 +155,26 @@ body {
     color: white;
     text-align: center;
 
-    img {
-        background-position: 80em !important;
-    }
-
     .hero-image {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: cover; // Ensures the image fills the area without distortion
+        object-position: center; // Center the image for better alignment
         z-index: -1;
+        background-repeat: no-repeat;
         filter: brightness(0.7);
-
-
-
     }
 
     .hero-content {
         z-index: 1;
+        padding: 1rem;
     }
 
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 1rem;
     }
 
@@ -188,7 +184,7 @@ body {
     }
 
     .cta-button {
-        background-color: $secondary-color;
+        background-color: $primary-color;
         color: $dark-bg;
         padding: 0.75rem 1.5rem;
         font-size: 1rem;
@@ -198,18 +194,48 @@ body {
         transition: background-color 0.3s ease;
 
         &:hover {
-            background-color: darken($secondary-color, 10%);
+            // background-color: darken($secondary-color, 10%);
+        }
+    }
+
+    /* Media Query for Mobile View */
+    @media (max-width: 768px) {
+        .hero {
+            height: auto; // Allow the hero section to adjust height on smaller screens
+            padding-top: 3rem; // Add spacing for content
+
+            .hero-image {
+                object-position: top;
+                background-position: 100em !important;
+
+            }
+
+            h1 {
+                font-size: 2rem; // Adjust heading size for smaller screens
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                font-size: 0.9rem;
+            }
         }
     }
 }
 
+
 .contact-us-btn {
     text-decoration: none;
-    padding: 0.1rem 1.5rem;
-    background-color: $secondary-color;
+    padding: 0.1rem 1rem;
+    background-color: $primary-color;
     border-radius: 1em;
     font-size: 1.5em;
+    color: white;
     transition: background-color 0.3s ease;
+    margin: auto;
+
 
 }
 
@@ -223,24 +249,38 @@ body {
 .services {
     background-color: $light-bg;
     padding: 4rem 0;
+    margin-bottom: 2em;
 
     h2 {
         text-align: center;
         font-size: 2.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
 
     .service-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Ensure items shrink well on mobile
-        gap: 2rem;
+        display: flex; // Use flexbox for horizontal alignment
+        flex-wrap: wrap; // Allow wrapping on smaller screens
+        gap: 1rem;
+        justify-content: center; // Center the content horizontally
+
+        @media (min-width: 1024px) {
+            // Align items in a single row for large screens
+            flex-wrap: nowrap;
+        }
     }
 
     .service-card {
+        flex: 1 1 300px; // Allow cards to shrink and grow
+        max-width: 400px; // Set a maximum width for consistency
         background-color: white;
         border-radius: 8px;
-        overflow: hidden;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+
+        &:hover {
+            transform: scale(1.05); // Subtle hover effect
+            box-shadow: 0 6px 12px rgba(22, 19, 175, 0.15);
+        }
 
         img {
             width: 100%;
@@ -259,8 +299,32 @@ body {
             }
 
             h3 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
                 margin-bottom: 0.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+                color: #555;
+            }
+        }
+    }
+}
+
+
+// Mobile adjustments
+@media (max-width: 768px) {
+    .services {
+        padding: 2rem 1rem;
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card {
+            img {
+                height: 150px;
             }
         }
     }
