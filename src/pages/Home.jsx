@@ -29,17 +29,16 @@ export default function App() {
         <div className="app">
             {/* Hero Section with Overlay Header */}
             <section className="hero">
-                <LazyLoadImage
-                     src={header_image}
-                     loading="lazy"
-
-                     className="hero-image"
-                     srcSet="/src/assets/header-small.webp 768w, /src/assets/header.webp 1200w"
-                     sizes="(max-width: 768px) 768px, 100vw"
-                     alt="Hero Background"
-                    
-
+                <img
+                    src={header_image}
+                    loading="lazy"
+                    className="hero-image"
+                    srcSet="/assets/header.webp 768w, /assets/header.webp 1200w"
+                    sizes="(max-width: 768px) 768px, 100vw"
+                    alt="Hero Background"
                 />
+
+
                 <header className="header">
                     <div className="container">
                         {/* Logo */}

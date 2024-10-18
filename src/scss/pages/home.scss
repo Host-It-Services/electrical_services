@@ -165,13 +165,11 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover; // Ensures the image fills the area without distortion
         object-position: center; // Center the image for better alignment
         z-index: -1;
         background-repeat: no-repeat;
-        background-position: 00em;
-        background-size: cover;
-        filter: brightness(0.7);
+        object-fit: cover; // Ensure the image fills the container
+        z-index: -1; // Make sure it's behind other content
     }
 
     .hero-content {

@@ -130,13 +130,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   object-position: center;
   z-index: -1;
   background-repeat: no-repeat;
-  background-position: 0em;
-  background-size: cover;
-  filter: brightness(0.7);
+  object-fit: cover;
+  z-index: -1;
 }
 .hero .hero-content {
   z-index: 1;
