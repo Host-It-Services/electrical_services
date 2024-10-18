@@ -20,6 +20,10 @@ export default function App() {
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+    // Function to close the menu
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log('Form submitted:', { name, email, message })
@@ -27,42 +31,26 @@ export default function App() {
 
     return (
         <div className="app">
-            {/* Hero Section with Overlay Header */}
             <section className="hero">
-                <img
-                    src={header_image}
-                    loading="lazy"
-                    className="hero-image"
-                    srcSet="/assets/header.webp 768w, /assets/header.webp 1200w"
-                    sizes="(max-width: 768px) 768px, 100vw"
-                    alt="Hero Background"
-                />
-
-
-                <header className="header">
-                    <div className="container">
-                        {/* Logo */}
-                        <div className="logo">
-                            <LazyLoadImage src={logo} loading="lazy" alt="" width="150" height="50" />
-                        </div>
-
-                        {/* Hamburger Icon (Only Visible on Mobile) */}
-                        <div className="hamburger" onClick={toggleMenu}>
-                            <span className="bar"></span>
-                            <span className="bar"></span>
-                            <span className="bar"></span>
-                        </div>
-
-                        {/* Navigation Menu */}
-                        <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
-                            <ul>
-                                <li><a href="#services">Services</a></li>
-                                <li><a href="#about">About</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </header>
+            <header className="header">
+            <div className="container">
+                <div className="logo">
+                    <LazyLoadImage src={logo} loading="lazy" alt="" width="150" height="50" />
+                </div>
+                <div className="hamburger" onClick={toggleMenu}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
+                <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+                    <ul>
+                        <li><a href="#services" onClick={closeMenu}>Services</a></li>
+                        <li><a href="#about" onClick={closeMenu}>About</a></li>
+                        <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
                 <div className="hero-content">
                     <div className="container">
                         <h1>Expert Electrical Services</h1>
