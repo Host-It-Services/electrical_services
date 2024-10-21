@@ -19,7 +19,6 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
   overflow: hidden;
 }
 
@@ -30,7 +29,7 @@ body {
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
-  padding: 0rem 0;
+  padding: 0 20px;
   /* Hamburger icon (only visible on mobile) */
   /* Responsive Styles */
 }
@@ -50,9 +49,8 @@ body {
   margin-right: 0.5rem;
 }
 .header .logo img {
-  width: 8rem;
-  height: 5em;
-  aspect-ratio: 26/29 !important;
+  height: 150px;
+  aspect-ratio: 50/2;
 }
 .header nav ul {
   display: flex;
@@ -198,7 +196,7 @@ body {
 
 .services {
   background-color: #f3f4f6;
-  padding: 4rem 0;
+  padding: 4rem 0rem;
   margin-bottom: 2em;
 }
 .services h2 {
@@ -314,7 +312,7 @@ body {
 
 .contact {
   background-color: #f3f4f6;
-  padding: 4rem 1rem;
+  padding: 1rem 1rem;
 }
 .contact h2 {
   text-align: center;
