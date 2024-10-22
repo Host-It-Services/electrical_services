@@ -1,6 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+import viteImagemin from 'vite-plugin-imagemin';
 
 export default defineConfig({
   plugins: [
@@ -13,62 +14,69 @@ export default defineConfig({
         short_name: 'PowerPro',
         description: 'Expert Electrical Services',
         theme_color: '#ffffff',
-        background_color: '#ffffff', // Optional: Add background color for better UX
-        display: 'standalone', // Makes it behave like a native app
+        background_color: '#ffffff',
+        display: 'standalone',
         icons: [
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'pwa-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'pwa-maskable-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'maskable'
-          }
-        ]
+            purpose: 'maskable',
+          },
+        ],
       },
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: ({ request }) =>
-              request.destination === 'image', // Cache images
+            urlPattern: ({ request }) => request.destination === 'image',
             handler: 'CacheFirst',
             options: {
               cacheName: 'images-cache',
               expiration: {
-                maxEntries: 50, // Limit entries in the cache
-                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
-              }
-            }
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+              },
+            },
           },
           {
-            urlPattern: /^https:\/\/fonts\.(gstatic|googleapis)\.com/, // Cache Google Fonts
+            urlPattern: /^https:\/\/fonts\.(gstatic|googleapis)\.com/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'google-fonts-cache',
               expiration: {
-                maxAgeSeconds: 365 * 24 * 60 * 60 // 1 year
-              }
-            }
-          }
-        ]
-      }
+                maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+              },
+            },
+          },
+        ],
+      },
+    }),
+    viteImagemin({
+      // Only WebP compression
+      webp: { quality: 90 },
     })
+    ,
   ],
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'] // Vendor chunking to improve load performance
-        }
-      }
-    }
-  }
-})
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+      },
+    },
+  },
+
+});

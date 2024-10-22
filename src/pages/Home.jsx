@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import whyus from "../assets/team.webp";
-import contactUs from "../assets/call.webp";
+import whyus from "../assets/african-american.webp";
+import contactUs from "../assets/portrait-african.webp";
 import logo from "../assets/logo.webp";
-import header_image from "../assets/header.webp"
 import { services } from "../data/service_data";
 import { Clock, ThumbsUp, PhoneCall } from 'lucide-react'
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa';
@@ -32,25 +31,35 @@ export default function App() {
     return (
         <div className="app">
             <section className="hero">
-            <header className="header">
-            <div className="container">
-                <div className="logo">
-                    <LazyLoadImage src={logo} loading="lazy" alt="" width="150" height="50" />
-                </div>
-                <div className="hamburger" onClick={toggleMenu}>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                </div>
-                <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
-                    <ul>
-                        <li><a href="#services" onClick={closeMenu}>Services</a></li>
-                        <li><a href="#about" onClick={closeMenu}>About</a></li>
-                        <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+                <header className="header">
+                    <div className="container">
+                        <div className="logo">
+                            <div className="logo">
+                                <LazyLoadImage
+                                    src={logo}
+                                    loading="lazy"
+                                    alt="PowerPro Logo"
+                                    width="150"
+                                    height="50"
+                                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                    style={{ cursor: 'pointer' }} // Add cursor style to indicate it's clickable
+                                />
+                            </div>
+                        </div>
+                        <div className="hamburger" onClick={toggleMenu}>
+                            <span className="bar"></span>
+                            <span className="bar"></span>
+                            <span className="bar"></span>
+                        </div>
+                        <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+                            <ul>
+                                <li><a href="#services" onClick={closeMenu}>Services</a></li>
+                                <li><a href="#about" onClick={closeMenu}>About</a></li>
+                                <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
                 <div className="hero-content">
                     <div className="container">
                         <h1>Expert Electrical Services</h1>
@@ -68,14 +77,14 @@ export default function App() {
                         {services.map((service, index) => (
                             <div key={index} className="service-card">
                                 <LazyLoadImage
-                                    src={service.image}
-                                    loading="lazy"
-                                    alt={service.title}
-                                    effect="blur"
-                                    style={{ width: '100%', height: 'auto' }} // Makes the image responsive
-                                    sizes="(max-width: 600px) 50vw, 220px"
+                                    src={service.image.src}               // Main image source
+                                    srcSet={service.image.srcSet}          // Responsive image sources
+                                    sizes={service.image.sizes}            // Responsive sizes
+                                    loading="lazy"                         // Lazy loading attribute
+                                    alt={service.title}                    // Alt text for accessibility
+                                    effect="blur"                          // Blur effect on load
+                                    style={{ width: '100%', height: 'auto' }} // Responsive image style
                                 />
-
                                 <div className="service-content">
                                     <div className="service-icon">{service.icon}</div>
                                     <h3>{service.title}</h3>
@@ -83,6 +92,7 @@ export default function App() {
                                 </div>
                             </div>
                         ))}
+
                     </div>
                 </div>
             </section>
@@ -114,7 +124,9 @@ export default function App() {
                                 alt="Our team of electricians"
                                 effect="blur"
                                 loading="lazy"
-                                srcSet="/assets/team-small.webp 480w, /assets/team.webp 800w"
+                                // srcSet="/assets/african-american-small.webp 480w, /assets/african-american.webp 800w"
+                                srcSet={`${whyus} 480w, ${whyus} 800w`}
+
                                 sizes="(max-width: 600px) 480px, 800px"
                             />
                         </div>
@@ -133,6 +145,7 @@ export default function App() {
                                 alt="Electrician van"
                                 effect="blur"
                                 loading="lazy"
+                                srcSet={`${contactUs} 480w, ${contactUs} 800w`}
                                 sizes="(max-width: 600px) 480px, 800px"
                             />
                         </div>
