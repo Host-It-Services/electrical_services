@@ -19,6 +19,9 @@ export default function App() {
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+    const facebookUrl = import.meta.env.VITE_FACEBOOK_URL;
+    const whatsappUrl = import.meta.env.VITE_WHATSAPP_URL;
+
     // Function to close the menu
     const closeMenu = () => {
         setIsMenuOpen(false);
@@ -34,17 +37,15 @@ export default function App() {
                 <header className="header">
                     <div className="container">
                         <div className="logo">
-                            <div className="logo">
-                                <LazyLoadImage
-                                    src={logo}
-                                    loading="lazy"
-                                    alt="PowerPro Logo"
-                                    width="150"
-                                    height="50"
-                                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                                    style={{ cursor: 'pointer' }} // Add cursor style to indicate it's clickable
-                                />
-                            </div>
+                            <LazyLoadImage
+                                src={logo}
+                                loading="lazy"
+                                alt="PowerPro Logo"
+                                width="150"
+                                height="50"
+                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                style={{ cursor: 'pointer' }}
+                            />
                         </div>
                         <div className="hamburger" onClick={toggleMenu}>
                             <span className="bar"></span>
@@ -56,12 +57,23 @@ export default function App() {
                                 <li><a href="#services" onClick={closeMenu}>Services</a></li>
                                 <li><a href="#about" onClick={closeMenu}>About</a></li>
                                 <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+                                <li>
+                                    <a
+                                          href={whatsappUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="whatsapp-button"
+                                        aria-label="Contact us on WhatsApp"
+                                    >
+                                        <FaWhatsapp /> WhatsApp
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
                 </header>
                 <div className="hero-content">
-                    <div className="container">
+                    <div className="container-hero">
                         <h1>Expert Electrical Services</h1>
                         <p>Powering your home and business with safety and reliability</p>
                         <a className='contact-us-btn' href="#contact">Contact Us</a>
@@ -182,29 +194,31 @@ export default function App() {
                     <p>&copy; {new Date().getFullYear()} PowerPro Electricians. All rights reserved.</p>
                     <p>Licensed and Insured | Available 24/7</p>
                     <div className="social-links">
-                        <a
-                            href="https://www.facebook.com/profile.php?id=61567007821122&mibextid=rS40aB7S9Ucbxw6v"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="social-icon"
-                            aria-label="Facebook"
-                        >
-                            <FaFacebook />
-                        </a>
-
-                        <a
-                            href="https://wa.me/27684734992"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="social-icon"
-                            aria-label="WhatsApp"
-                        >
-                            <FaWhatsapp />
-                        </a>
+                        {facebookUrl && (
+                            <a
+                                href={facebookUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="social-icon"
+                                aria-label="Facebook"
+                            >
+                                <FaFacebook />
+                            </a>
+                        )}
+                        {whatsappUrl && (
+                            <a
+                                href={whatsappUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="social-icon"
+                                aria-label="WhatsApp"
+                            >
+                                <FaWhatsapp />
+                            </a>
+                        )}
                     </div>
                 </div>
             </footer>
-
         </div>
     )
 }

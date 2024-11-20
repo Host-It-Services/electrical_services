@@ -80,6 +80,7 @@ body {
         ul {
             display: flex;
             list-style: none;
+            align-items: center;
 
             li {
                 margin-left: 1rem;
@@ -93,6 +94,25 @@ body {
                         /* Secondary color */
                     }
                 }
+            }
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: white solid 2px;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #128C7E;
+            }
+
+            svg {
+                margin-right: 0.5rem;
             }
         }
     }
@@ -130,6 +150,10 @@ body {
                     margin: 1rem 0;
                 }
             }
+
+            .whatsapp-button {
+                margin-top: 1rem;
+            }
         }
 
         .nav.open {
@@ -153,7 +177,6 @@ body {
         }
     }
 }
-
 
 
 // Hero Section
@@ -239,7 +262,7 @@ body {
 
 .contact-us-btn {
     text-decoration: none;
-    padding: 0.1rem 1rem;
+    padding: 0.5rem 1rem;
     background-color: $primary-color;
     border-radius: 1em;
     font-size: 1.5em;
@@ -251,15 +274,102 @@ body {
 }
 
 .contact-us-btn:hover {
-    background-color: #A23731;
+    background-color: #eb1409;
     color: white;
     /* Change background on hover */
 }
 
 // Services Section
+// .services {
+//     background-color: $light-bg;
+//     padding: 4rem 0rem;
+//     margin-bottom: 2em;
+
+//     h2 {
+//         text-align: center;
+//         font-size: 2.5rem;
+//         margin-bottom: 3rem;
+//     }
+
+//     .service-grid {
+//         display: flex; // Use flexbox for horizontal alignment
+//         flex-wrap: wrap; // Allow wrapping on smaller screens
+//         gap: 1rem;
+//         justify-content: center; // Center the content horizontally
+
+//         @media (min-width: 1024px) {
+//             // Align items in a single row for large screens
+//             flex-wrap: nowrap;
+//         }
+//     }
+
+//     .service-card {
+//         flex: 1 1 300px; // Allow cards to shrink and grow
+//         max-width: 400px; // Set a maximum width for consistency
+//         background-color: white;
+//         border-radius: 8px;
+//         height: 33em;
+//         box-shadow: 0 4px 6px rgba(182, 11, 11, 0.1);
+//         transition: transform 0.3s, box-shadow 0.3s;
+
+//         &:hover {
+//             transform: scale(1.05); // Subtle hover effect
+//             box-shadow: 0 50px 50px rgba(22, 19, 175, 0.15);
+//         }
+
+//         img {
+//             width: 100%;
+//             height: 200px;
+//             object-fit: cover;
+//         }
+
+//         .service-content {
+//             padding: 1.2rem;
+//             text-align: center;
+
+//             .service-icon {
+//                 color: $primary-color;
+//                 font-size: 2rem;
+//                 margin-bottom: -1rem;
+//             }
+
+//             h3 {
+//                 font-size: 1.6rem;
+//                 margin-bottom: 0.5rem;
+//             }
+
+//             p {
+//                 font-size: 1rem;
+//                 color: #555;
+//             }
+//         }
+//     }
+// }
+
+
+// // Mobile adjustments
+// @media (max-width: 768px) {
+//     .services {
+//         padding: 2rem 1rem;
+
+//         h2 {
+//             font-size: 2rem;
+//             margin-bottom: 1.5rem;
+//         }
+
+//         .service-card {
+//             img {
+//                 height: 150px;
+//             }
+//         }
+//     }
+// }
+
+
+// Services Section
 .services {
     background-color: $light-bg;
-    padding: 4rem 0rem;
+    padding: 4rem 0;
     margin-bottom: 2em;
 
     h2 {
@@ -269,29 +379,22 @@ body {
     }
 
     .service-grid {
-        display: flex; // Use flexbox for horizontal alignment
-        flex-wrap: wrap; // Allow wrapping on smaller screens
-        gap: 1rem;
-        justify-content: center; // Center the content horizontally
-
-        @media (min-width: 1024px) {
-            // Align items in a single row for large screens
-            flex-wrap: nowrap;
-        }
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        justify-content: center;
     }
 
     .service-card {
-        flex: 1 1 300px; // Allow cards to shrink and grow
-        max-width: 400px; // Set a maximum width for consistency
         background-color: white;
         border-radius: 8px;
-        height: 33em;
-        box-shadow: 0 4px 6px rgba(182, 11, 11, 0.1);
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s, box-shadow 0.3s;
 
         &:hover {
-            transform: scale(1.05); // Subtle hover effect
-            box-shadow: 0 50px 50px rgba(22, 19, 175, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         img {
@@ -301,42 +404,48 @@ body {
         }
 
         .service-content {
-            padding: 1.2rem;
+            padding: 1.5rem;
             text-align: center;
 
             .service-icon {
-                color: $primary-color;
-                font-size: 2rem;
-                margin-bottom: -1rem;
+                // color: $primary-color;
+                // font-size: 2.5rem;
+                // margin-bottom: 1rem;
             }
 
             h3 {
-                font-size: 1.6rem;
-                margin-bottom: 0.5rem;
+                font-size: 1.4rem;
+                // margin-bottom: 0.75rem;
             }
 
             p {
                 font-size: 1rem;
                 color: #555;
+                line-height: 1.5;
             }
         }
     }
 }
 
-
 // Mobile adjustments
 @media (max-width: 768px) {
     .services {
-        padding: 2rem 1rem;
+        padding: 3rem 1rem;
 
         h2 {
             font-size: 2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-grid {
+            grid-template-columns: 1fr;
         }
 
         .service-card {
+            max-width: 100%;
+
             img {
-                height: 150px;
+                height: 180px;
             }
         }
     }

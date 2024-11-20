@@ -56,6 +56,7 @@ body {
 .header nav ul {
   display: flex;
   list-style: none;
+  align-items: center;
 }
 .header nav ul li {
   margin-left: 1rem;
@@ -67,6 +68,22 @@ body {
 .header nav ul li a:hover {
   color: #fbbf24;
   /* Secondary color */
+}
+.header nav .whatsapp-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: white solid 2px;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+.header nav .whatsapp-button:hover {
+  background-color: #128C7E;
+}
+.header nav .whatsapp-button svg {
+  margin-right: 0.5rem;
 }
 .header .hamburger {
   display: none;
@@ -100,6 +117,9 @@ body {
   }
   .header nav ul li {
     margin: 1rem 0;
+  }
+  .header nav .whatsapp-button {
+    margin-top: 1rem;
   }
   .header .nav.open {
     height: auto;
@@ -190,7 +210,7 @@ body {
 
 .contact-us-btn {
   text-decoration: none;
-  padding: 0.1rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: #2563eb;
   border-radius: 1em;
   font-size: 1.5em;
@@ -200,14 +220,14 @@ body {
 }
 
 .contact-us-btn:hover {
-  background-color: #A23731;
+  background-color: #eb1409;
   color: white;
   /* Change background on hover */
 }
 
 .services {
   background-color: #f3f4f6;
-  padding: 4rem 0rem;
+  padding: 4rem 0;
   margin-bottom: 2em;
 }
 .services h2 {
@@ -216,28 +236,21 @@ body {
   margin-bottom: 3rem;
 }
 .services .service-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
   justify-content: center;
 }
-@media (min-width: 1024px) {
-  .services .service-grid {
-    flex-wrap: nowrap;
-  }
-}
 .services .service-card {
-  flex: 1 1 300px;
-  max-width: 400px;
   background-color: white;
   border-radius: 8px;
-  height: 33em;
-  box-shadow: 0 4px 6px rgba(182, 11, 11, 0.1);
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .services .service-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 50px 50px rgba(22, 19, 175, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 .services .service-card img {
   width: 100%;
@@ -245,33 +258,34 @@ body {
   object-fit: cover;
 }
 .services .service-card .service-content {
-  padding: 1.2rem;
+  padding: 1.5rem;
   text-align: center;
 }
-.services .service-card .service-content .service-icon {
-  color: #2563eb;
-  font-size: 2rem;
-  margin-bottom: -1rem;
-}
 .services .service-card .service-content h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
 }
 .services .service-card .service-content p {
   font-size: 1rem;
   color: #555;
+  line-height: 1.5;
 }
 
 @media (max-width: 768px) {
   .services {
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
   }
   .services h2 {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .services .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .services .service-card {
+    max-width: 100%;
   }
   .services .service-card img {
-    height: 150px;
+    height: 180px;
   }
 }
 .about {
