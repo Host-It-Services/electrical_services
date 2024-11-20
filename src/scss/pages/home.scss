@@ -407,11 +407,6 @@ body {
             padding: 1.5rem;
             text-align: center;
 
-            .service-icon {
-                // color: $primary-color;
-                // font-size: 2.5rem;
-                // margin-bottom: 1rem;
-            }
 
             h3 {
                 font-size: 1.4rem;
@@ -446,6 +441,8 @@ body {
 
             img {
                 height: 180px;
+                object-fit: cover;
+
             }
         }
     }

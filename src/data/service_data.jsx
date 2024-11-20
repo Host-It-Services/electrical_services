@@ -58,7 +58,7 @@ export const services = [
     description: "Secure your property with our professional electric fence installation services.",
     image: {
       src: "/assets/electric-fence.webp",
-      srcSet: "/assets/electric-fence-small.webp 480w, /assets/electric-fence.webp 800w",
+      srcSet: "/assets/electric-fence-small.webp 50w, /assets/electric-fence.webp 50w",
       sizes: "(max-width: 600px) 50vw, 220px"
     }
   }
