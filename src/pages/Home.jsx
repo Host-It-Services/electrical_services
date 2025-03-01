@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import whyus from "../assets/african-american.webp";
 import contactUs from "../assets/portrait-african.webp";
-import logo from "../assets/logo.webp";
+import logo from "/logo.webp";
 import { services } from "../data/service_data";
 import { Clock, ThumbsUp, PhoneCall } from 'lucide-react'
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa';

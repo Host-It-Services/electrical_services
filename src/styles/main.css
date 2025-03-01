@@ -291,6 +291,10 @@ body {
     object-fit: cover;
   }
 }
+.service-icon {
+  background: #1e3a8a;
+}
+
 .about {
   padding: 4rem 0;
 }
